@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TupãStudios — A Empresa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-content { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; text-align: center; }
+    
+    .company-desc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 4px;
+      text-align: left;
+      margin-bottom: 3rem;
+      border-left: 4px solid var(--green);
+    }
+    .company-desc p { margin-bottom: 1rem; font-size: 0.95rem; color: var(--white); opacity: 0.9; line-height: 1.8; }
+    .company-desc p:last-child { margin-bottom: 0; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .team-member { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; border-radius: 4px; transition: transform 0.2s; }
+    .team-member:hover { transform: translateY(-5px); border-color: var(--green); }
+    .team-member h3 { font-family: var(--font-pixel); color: var(--white); font-size: 0.8rem; margin-bottom: 0.8rem; }
+    
+    /* LORE ESCONDIDA */
+    .lore-section { 
+      margin-top: 4rem; 
+      background: rgba(255, 43, 43, 0.05); 
+      padding: 3rem 2rem; 
+      border: 1px solid var(--red); 
+      border-radius: 4px; 
+      text-align: left;
+      display: none; /* ESCONDIDO POR PADRÃO */
+      animation: glitch-reveal 0.5s ease;
+    }
+    @keyframes glitch-reveal {
+      0% { opacity: 0; transform: scale(0.98) translate(-5px, 5px); filter: hue-rotate(90deg); }
+      50% { transform: scale(1.01) translate(5px, -5px); filter: hue-rotate(-90deg); }
+      100% { opacity: 1; transform: scale(1) translate(0, 0); filter: hue-rotate(0deg); }
+    }
+
+    .lore-section h2 { font-family: var(--font-pixel); color: var(--red); font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; text-shadow: var(--glow-red);}
+    .lore-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px dashed rgba(255, 43, 43, 0.3); }
+    .lore-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+    
+    /* GATILHO DO EASTER EGG */
+    .secret-trigger {
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .secret-trigger:active { color: var(--red); }
+  </style>
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <nav class="navbar">
+    <span class="nav-logo">&gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span></span>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tutorial.html">Aprenda a Jogar</a></li>
+      <li><a href="tupa.html" class="accent-green">A Empresa</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-content">
+    <div class="section-header">
+      <span class="section-tag mono secret-trigger" id="lore-trigger" title="Arquivo de sistema bloqueado...">&gt; WHOAMI</span>
+      <h2 class="section-title">A <span class="accent-green">TupãStudios</span></h2>
+      <p class="section-sub">Conheça a história e as mentes por trás do ! IndexError.</p>
+    </div>
+
+    <div class="company-desc mono">
+      <p>A <span class="accent-green">Tupã Studios</span> é um estúdio brasileiro de desenvolvimento de jogos online multiplataforma (consoles e PC). O objetivo da organização é criar experiências digitais divertidas e acessíveis, consolidando-se como referência no mercado nacional.</p>
+      <p>Nascida do crescimento explosivo durante a pandemia de covid-19, a empresa passou de 7 para 210 colaboradores apaixonados por tecnologia e inovação. Hoje, nossa infraestrutura e operação são distribuídas em quatro unidades estratégicas pelo Brasil: nossa Matriz e a Filial II em São Paulo, além das filiais no Rio de Janeiro e em Recife.</p>
+    </div>
+
+    <h2 class="section-title" style="font-size: 1.2rem; margin-top: 4rem; margin-bottom: 2rem;">Os <span class="accent-cyan">Arquitetos</span></h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <h3>Kaique Dias</h3>
+        <p class="mono accent-yellow">Desenvolvedor & Arquiteto</p>
+      </div>
+      <div class="team-member">
+        <h3>Kaique Oliveira</h3>
+        <p class="mono accent-cyan">Desenvolvedor & Lógica</p>
+      </div>
+      <div class="team-member">
+        <h3>Igor Navarro</h3>
+        <p class="mono accent-red">Desenvolvedor & Designer</p>
+      </div>
+    </div>
+
+    <div class="lore-section" id="secret-lore">
+      <h2>⚠️ ARQUIVOS CONFIDENCIAIS DESBLOQUEADOS ⚠️</h2>
+      
+      <div class="lore-item">
+        <h3 class="accent-yellow mono">&gt; Operação Igor Furlobo</h3>
+        <p class="mono">Reza a lenda na TupãStudios que o email do Igor na verdade é "igorfurabolo". Enquanto os dois Kaiques codam, o Igor garante o nível de açúcar do time roubando doces na calada da noite.</p>
+      </div>
+
+      <div class="lore-item">
+        <h3 class="accent-cyan mono">&gt; Segurança Nível Unicórnio</h3>
+        <p class="mono">Você acha que usamos firewall? Nossa planta da empresa revela a verdade: a sala de servidores da Matriz é guardada por um unicórnio tático. É ele quem reinicia os roteadores quando o ping sobe.</p>
+      </div>
+
+      <div class="lore-item">
+        <h3 class="accent-red mono">&gt; O Módulo Italiano (Paradox)</h3>
+        <p class="mono">Durante madrugadas intensas de código, o bot Paradox herdou o espírito das pistas. Experimente falar sobre "Francesco Virgolini" ou "Marcello" no Terminal e veja o sotaque italiano assumir o controle. FIIIIIIUM! 🏎️💨</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const trigger = document.getElementById('lore-trigger');
+    const loreSection = document.getElementById('secret-lore');
+    let clickCount = 0;
+    let clickTimer;
+
+    trigger.addEventListener('click', () => {
+      clickCount++;
+      
+      // Reseta os cliques se demorar muito entre um e outro
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+
+      // Muda a cor da tag para indicar que algo está acontecendo
+      if (clickCount === 1) trigger.style.color = 'var(--yellow)';
+      if (clickCount === 2) trigger.style.color = 'var(--red)';
+
+      // No terceiro clique, revela a Lore!
+      if (clickCount === 3) {
+        trigger.textContent = '> ACESSO_CONCEDIDO';
+        trigger.style.color = 'var(--green)';
+        loreSection.style.display = 'block';
+        
+        // Rola a tela suavemente até a lore
+        setTimeout(() => {
+          loreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+        
+        // Desativa o botão para não bugar depois de aberto
+        trigger.style.pointerEvents = 'none';
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
