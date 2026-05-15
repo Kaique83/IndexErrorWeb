@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial — ! IndexError</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tutorial-content { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+    .tut-step { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--cyan); border-radius: 4px;}
+    .tut-step h3 { font-family: var(--font-pixel); color: var(--cyan); font-size: 1rem; margin-bottom: 1rem; line-height: 1.5; }
+    .tut-step p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .tut-example { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 4px; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <nav class="navbar">
+    <span class="nav-logo">&gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span></span>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tutorial.html" class="accent-cyan">Aprenda a Jogar</a></li>
+      <li><a href="tupa.html">A Empresa</a></li>
+    </ul>
+  </nav>
+
+  <div class="tutorial-content">
+    <div class="section-header">
+      <span class="section-tag mono">&gt; MASTERCLASS.exe</span>
+      <h2 class="section-title">Manual de <span class="accent-cyan">Sobrevivência</span></h2>
+      <p class="section-sub">Entenda como o computador processa as expressões booleanas para não perder a cabeça quando o timer acelerar.</p>
+    </div>
+
+    <div class="tut-step">
+      <h3>1. A Regra da Negação (!, NOT, ¬)</h3>
+      <p class="mono">A negação é o pilar central do jogo. O comando exige que você vá para qualquer direção do mapa, EXCETO a direção indicada após o símbolo.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span> CIMA<br><br>
+        <span class="accent-green">Solução:</span> Você pode ir para Baixo, Esquerda ou Direita. Se for para cima, Game Over.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--yellow);">
+      <h3 style="color: var(--yellow);">2. A Disjunção ou Opção (||, OR, V, +)</h3>
+      <p class="mono">A disjunção cria uma bifurcação na lógica. O comando apresenta duas opções válidas, e basta que você cumpra UMA delas para avançar.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> CIMA <span class="accent-yellow">||</span> BAIXO<br><br>
+        <span class="accent-green">Solução:</span> Pressione Cima OU Baixo. Ambas as escolhas estão corretas.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--red);">
+      <h3 style="color: var(--red);">3. A Conjunção (&&, AND, ^, *)</h3>
+      <p class="mono">A conjunção é um filtro rigoroso. Aqui, as DUAS condições apresentadas precisam ser respeitadas obrigatoriamente e simultaneamente na sua escolha.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> ESQUERDA <span class="accent-red">&& !</span> BAIXO<br><br>
+        <span class="accent-green">Solução:</span> A sua escolha tem que ser Esquerda E ao mesmo tempo não pode ser Baixo. A única resposta óbvia: Esquerda.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--green);">
+      <h3 style="color: var(--green);">4. Negação de Parênteses e Combinações</h3>
+      <p class="mono">No Nível 5, a coisa complica. Resolvemos os parênteses primeiro. Se o "!" estiver do lado de fora, ele nega o grupo inteiro.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span>(ESQUERDA <span class="accent-yellow">||</span> DIREITA)<br><br>
+        <span class="accent-green">Solução:</span> O comando pede qualquer coisa que NÃO seja (Esquerda ou Direita). Sobram apenas: Cima ou Baixo.
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="index.html#terminal" class="btn-primary">Ir para o Terminal Praticar</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
