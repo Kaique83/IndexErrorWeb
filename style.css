@@ -870,3 +870,26 @@ code {
     display: none; /* Esconde o texto "Falar com Paradox" no celular, deixa só o ícone */
   }
 }
+
+/* Efeito de fundo binário do site */
+
+#binary-cascade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 800px; /* Define a altura da área da cascata */
+    z-index: -1;    /* Coloca atrás do texto e imagens */
+    pointer-events: none; /* Garante que pode clicar nos botões por cima */
+    
+    /* Efeito de Fade-out usando máscara gradiente */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+}
+
+/* Garante que o body/header tenha posição relativa para o canvas não fugir */
+body {
+    position: relative;
+    margin: 0;
+    background-color: #000; /* Ou a cor de fundo do teu site */
+}

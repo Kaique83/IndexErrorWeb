@@ -6,6 +6,52 @@
 /* =========================================================
    1. UI BÁSICA (Navbar e Footer)
    ========================================================= */
+
+const canvas = document.getElementById('binary-cascade');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = 800; // Deve coincidir com a altura no CSS
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const characters = "01";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+// Inicializa a posição vertical de cada coluna
+for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * -100; // Começam em alturas diferentes para parecer natural
+}
+
+function draw() {
+    // Fundo preto com opacidade baixa para criar o rastro (trail)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Cor dos números (podes mudar para o verde ou azul do teu site)
+    ctx.fillStyle = "rgba(0, 100, 0, 0.9)"; 
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        // Se a gota passar da altura do canvas, reseta aleatoriamente para o topo
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+// Controla a velocidade
+setInterval(draw, 80);
+
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
 const hamburger = document.getElementById('hamburger');
