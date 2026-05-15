@@ -647,42 +647,48 @@ code {
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
-  padding: 3rem 0 0;
+  padding: 3rem 0 2rem;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-inner {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1.5rem;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   padding-bottom: 2rem;
 }
 
 .footer-logo {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .footer-links {
   display: flex;
   gap: 1.5rem;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   transition: color 0.2s;
+  position: relative; 
+  z-index: 20;
 }
 .footer-links a:hover { color: var(--green); }
+.footer-links a:active {transform: scale(0.95);} 
 
 .footer-copy {
   font-size: 0.7rem;
   color: var(--muted);
   width: 100%;
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
 
