@@ -4,20 +4,70 @@
  */
 
 /* =========================================================
-   1. UI BÁSICA (Navbar e Footer)
+   1. UI BÁSICA (Navbar, Footer e Efeito Matrix)
    ========================================================= */
-document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+const canvas = document.getElementById('binary-cascade');
+
+// Só executa o efeito Matrix se o canvas existir na página atual!
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = 800;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  const characters = "01";
+  const fontSize = 16;
+  const columns = Math.floor(canvas.width / fontSize);
+  const drops = [];
+
+  for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -100; 
+  }
+
+  function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(0, 100, 0, 0.9)"; 
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+          const text = characters.charAt(Math.floor(Math.random() * characters.length));
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+              drops[i] = 0;
+          }
+          drops[i]++;
+      }
+  }
+  setInterval(draw, 80);
+}
+
+// Atualiza o ano no rodapé apenas se o rodapé existir na página
+const footerYear = document.getElementById('footer-year');
+if (footerYear) {
+  footerYear.textContent = new Date().getFullYear();
+}
+
+// Menu Hamburger com proteção
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
 
 /* =========================================================
    2. ESTADO E DICIONÁRIOS (ULTRA EXPANDIDOS)

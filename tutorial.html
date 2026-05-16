@@ -10,7 +10,7 @@
     .tutorial-content { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
     .tut-step { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--cyan); border-radius: 4px;}
     .tut-step h3 { font-family: var(--font-pixel); color: var(--cyan); font-size: 1rem; margin-bottom: 1rem; line-height: 1.5; }
-    .tut-step p { margin-bottom: 1rem; font-size: 0.95rem; }
+    .tut-step p { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8; opacity: 0.9;}
     .tut-example { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 4px; border: 1px solid var(--border); }
   </style>
 </head>
@@ -19,59 +19,69 @@
   <div class="scanlines" aria-hidden="true"></div>
 
   <nav class="navbar">
-    <span class="nav-logo">&gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span></span>
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">
+      &gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
       <li><a href="tutorial.html" class="accent-cyan">Aprenda a Jogar</a></li>
-      <li><a href="tupa.html">A Empresa</a></li>
+      <li><a href="tupa.html">Projeto Acadêmico</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
   </nav>
 
   <div class="tutorial-content">
     <div class="section-header">
       <span class="section-tag mono">&gt; MASTERCLASS.exe</span>
       <h2 class="section-title">Manual de <span class="accent-cyan">Sobrevivência</span></h2>
-      <p class="section-sub">Entenda como o computador processa as expressões booleanas para não perder a cabeça quando o timer acelerar.</p>
+      <p class="section-sub">Entenda como o computador processa as expressões booleanas com as mesmas analogias do nosso assistente Paradox.</p>
     </div>
 
-    <div class="tut-step">
-      <h3>1. A Regra da Negação (!, NOT, ¬)</h3>
-      <p class="mono">A negação é o pilar central do jogo. O comando exige que você vá para qualquer direção do mapa, EXCETO a direção indicada após o símbolo.</p>
+    <div class="tut-step" style="border-left-color: var(--white);">
+      <h3 style="color: var(--white);">1. O Básico</h3>
+      <p class="mono">O nosso ambiente possui 4 direções cardeais puras: CIMA, BAIXO, ESQUERDA e DIREITA. O computador lê exatamente o que está escrito. Se não houver nenhum símbolo estranho e a tela disser "CIMA", a resposta óbvia é ir para Cima.</p>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--green);">
+      <h3 style="color: var(--green);">2. A Regra da Negação (!, NOT, ¬)</h3>
+      <p class="mono">A negação inverte a verdade. Pense no "!" como uma placa de "PROIBIDO". Se o comando tem um "!", aquela direção se torna um campo minado fatal. Significa "Qualquer coisa, menos essa direção".</p>
       <div class="tut-example mono">
-        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span> CIMA<br><br>
-        <span class="accent-green">Solução:</span> Você pode ir para Baixo, Esquerda ou Direita. Se for para cima, Game Over.
+        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span> ESQUERDA<br><br>
+        <span class="accent-green">Solução:</span> Você pode ir para Cima, Baixo ou Direita. Se for para Esquerda, Game Over.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--cyan);">
+      <h3 style="color: var(--cyan);">3. A Disjunção (||, OR, V, +)</h3>
+      <p class="mono">Isso cria caminhos alternativos. Pense no "||" como duas portas abertas. Basta você escolher passar por UMA das portas para o computador aceitar como verdadeiro.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> CIMA <span class="accent-yellow">||</span> BAIXO<br><br>
+        <span class="accent-green">Solução:</span> Pressione Cima OU Baixo. Ambas as escolhas salvam a sua vida.
       </div>
     </div>
 
     <div class="tut-step" style="border-left-color: var(--yellow);">
-      <h3 style="color: var(--yellow);">2. A Disjunção ou Opção (||, OR, V, +)</h3>
-      <p class="mono">A disjunção cria uma bifurcação na lógica. O comando apresenta duas opções válidas, e basta que você cumpra UMA delas para avançar.</p>
+      <h3 style="color: var(--yellow);">4. A Conjunção (&&, AND, ^, *)</h3>
+      <p class="mono">Ao contrário das portas abertas do OR, o "&&" é um filtro implacável. É como um cofre com duas fechaduras: você PRECISA atender às DUAS condições ao mesmo tempo para abrir.</p>
       <div class="tut-example mono">
-        <span class="accent-yellow">Comando:</span> CIMA <span class="accent-yellow">||</span> BAIXO<br><br>
-        <span class="accent-green">Solução:</span> Pressione Cima OU Baixo. Ambas as escolhas estão corretas.
+        <span class="accent-yellow">Comando:</span> DIREITA <span class="accent-red">&& !</span> CIMA<br><br>
+        <span class="accent-green">Solução:</span> A sua escolha tem que ser Direita E ao mesmo tempo não pode ser Cima. A única resposta exata: Direita.
       </div>
     </div>
 
     <div class="tut-step" style="border-left-color: var(--red);">
-      <h3 style="color: var(--red);">3. A Conjunção (&&, AND, ^, *)</h3>
-      <p class="mono">A conjunção é um filtro rigoroso. Aqui, as DUAS condições apresentadas precisam ser respeitadas obrigatoriamente e simultaneamente na sua escolha.</p>
-      <div class="tut-example mono">
-        <span class="accent-yellow">Comando:</span> ESQUERDA <span class="accent-red">&& !</span> BAIXO<br><br>
-        <span class="accent-green">Solução:</span> A sua escolha tem que ser Esquerda E ao mesmo tempo não pode ser Baixo. A única resposta óbvia: Esquerda.
-      </div>
-    </div>
-
-    <div class="tut-step" style="border-left-color: var(--green);">
-      <h3 style="color: var(--green);">4. Negação de Parênteses e Combinações</h3>
-      <p class="mono">No Nível 5, a coisa complica. Resolvemos os parênteses primeiro. Se o "!" estiver do lado de fora, ele nega o grupo inteiro.</p>
+      <h3 style="color: var(--red);">5. Negação de Parênteses (Nível Final)</h3>
+      <p class="mono">Os parênteses funcionam como uma caixa. Primeiro nós olhamos o que tem na caixa, e depois aplicamos a regra de fora. Se o "!" estiver fora, ele proíbe o grupo inteiro.</p>
       <div class="tut-example mono">
         <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span>(ESQUERDA <span class="accent-yellow">||</span> DIREITA)<br><br>
-        <span class="accent-green">Solução:</span> O comando pede qualquer coisa que NÃO seja (Esquerda ou Direita). Sobram apenas: Cima ou Baixo.
+        <span class="accent-green">Solução:</span> A caixa pegou todo o eixo horizontal. O "!" proibiu essa caixa inteira. O que sobra? Apenas Cima ou Baixo.
       </div>
     </div>
 
     <div style="text-align: center; margin-top: 3rem;">
-      <a href="index.html#terminal" class="btn-primary">Ir para o Terminal Praticar</a>
+      <button class="btn-primary" onclick="document.getElementById('chat-window').classList.add('open'); document.getElementById('terminal-input').focus();">
+        <span class="btn-icon">&gt;_</span> Abrir Chatbot e Praticar
+      </button>
     </div>
   </div>
 

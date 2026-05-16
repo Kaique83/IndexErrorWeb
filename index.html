@@ -10,15 +10,19 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  
+  <canvas id="binary-cascade"></canvas>
 
   <div class="scanlines" aria-hidden="true"></div>
 
   <nav class="navbar">
-    <span class="nav-logo">&gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span></span>
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">
+      &gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html" class="accent-green">Início</a></li>
       <li><a href="tutorial.html">Aprenda a Jogar</a></li>
-      <li><a href="tupa.html">A Empresa</a></li>
+      <li><a href="tupa.html">Projeto Acadêmico</a></li>
       <li><a href="https://github.com/3-semestre-USJT/NOT-NOT-booleano-Tup-" target="_blank" class="nav-cta">GitHub</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
@@ -39,8 +43,8 @@
           <span class="btn-icon">?</span> Tutorial Completo
         </a>
         <a href="tupa.html" class="btn-primary">
-          <span class="btn-icon">!</span> Sobre a Tupã
-        </a>
+  <span class="btn-icon">!</span> Projeto Acadêmico
+</a>
         <a href="https://github.com/3-semestre-USJT/NOT-NOT-booleano-Tup-" target="_blank" class="btn-secondary" style="border-color: var(--muted); color: var(--white);">
           <span class="btn-icon">⬇</span> GitHub
         </a>
@@ -105,6 +109,34 @@
     </div>
   </section>
 
+  <section class="home-features">
+    <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+      <span class="section-tag mono">&gt; SYSTEM_MODULES</span>
+      <h2 class="section-title">Por que usar o <span class="accent-green">! IndexError</span>?</h2>
+      <p class="section-sub mono" style="margin-top: 1rem; opacity: 0.8;">O método definitivo para dominar a matemática booleana.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="fc-icon accent-cyan">&gt;_</div>
+        <h3 class="accent-cyan">Assistente Paradox</h3>
+        <p class="mono">Uma IA conversacional com personalidade dupla. O Paradox te ensina a teoria com maestria e depois julga seus erros em tempo real no Modo Sarcástico.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="fc-icon accent-red">!||</div>
+        <h3 class="accent-red">Gamificação Extrema</h3>
+        <p class="mono">Esqueça as aulas teóricas maçantes. Teste seus reflexos resolvendo expressões de negação (NOT) e conjunção (AND) lutando contra o relógio.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="fc-icon accent-yellow">{}</div>
+        <h3 class="accent-yellow">Lógica na Prática</h3>
+        <p class="mono">Projetado por alunos de Ciência da Computação, o sistema força a automação do raciocínio lógico através da repetição estruturada.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section-mechanics" id="mechanics">
     <div class="container">
       <div class="section-header">
@@ -153,16 +185,28 @@
           </div>
         </div>
 
-        <div class="level-card" data-level="5">
+        <div class="level-card boss-card" data-level="5">
           <div class="level-number mono">NIVEL_05</div>
           <div class="level-op accent-white" style="font-size: 1.1rem; line-height: 2;">COMBINAÇÃO</div>
           <h3 class="level-name">Paradoxo Total</h3>
-          <p class="level-desc mono">O ápice do desafio da TupãStudios. Todas as regras misturadas.</p>
+          <p class="level-desc mono">O ápice do desafio da TupãStudios. Todas as regras misturadas em um único pulso de adrenalina.</p>
           <div class="cmd-example">
-            <span class="cmd-input accent-yellow">!(C || B) && ! D</span> → <span class="cmd-output accent-green">ESQUERDA</span>
+            <span class="cmd-input accent-yellow">!(C || B) && ! D</span> <span class="cmd-arrow">→</span> <span class="cmd-output accent-green">ESQUERDA</span>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="home-boot">
+    <div class="boot-container">
+      <h2 class="section-title" style="margin-bottom: 2rem; font-size: 1.2rem;">Sequência de <span class="accent-green">Inicialização</span></h2>
+      <div class="boot-steps mono">
+        <p><span class="accent-yellow">[1] BOOT:</span> Clique no ícone no canto inferior direito para abrir o terminal.</p>
+        <p><span class="accent-yellow">[2] LEARN:</span> Digite <span class="accent-cyan">"tutorial"</span> para iniciar a Masterclass com o Paradox.</p>
+        <p><span class="accent-yellow">[3] EXECUTE:</span> Digite <span class="accent-red">"desafio"</span> e escolha o número de rodadas.</p>
+        <p><span class="accent-yellow">[4] SURVIVE:</span> Não erre as direções. O Game Over é imediato.</p>
       </div>
     </div>
   </section>
