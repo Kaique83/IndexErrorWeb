@@ -1,3 +1,7 @@
+// Console security notice to prevent Self-XSS
+console.log('%cPARE!', 'font-size:48px; color: red; font-weight: 900;');
+console.warn('Este é um recurso de navegador voltado para desenvolvedores. Se alguém te disse para colar um código aqui para "hackear" o jogo, é um golpe (Self-XSS) e pode comprometer sua segurança local.');
+
 /**
  * ! IndexError — TupãStudios
  * script.js — Paradox Chatbot V12.0 (Expert UX, Clean Code & Deep Tutorial)
@@ -508,6 +512,7 @@ async function processInput(raw) {
 
   } else if (input === 'aviso' || input === 'disclaimer') {
     await addMessage('sys', 'SISTEMA >', 'Aviso para leigos: Esse bot possui um modo projetado com intenções humoristas e ácidas. Não leve para o lado pessoal.');
+    await addMessage('sys', 'SISTEMA >', 'Privacidade & LGPD: Este terminal é um ambiente estático. Nenhum dado pessoal, log ou mensagem digitada aqui é capturada, salva ou enviada para servidores externos.');
     await addMessage('bot', 'PARADOX >', 'Avisos corporativos dados. Agora digite "desafio" e vamos jogar.');
 
   } else if (dictCredits.includes(input)) {
