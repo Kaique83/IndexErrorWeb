@@ -166,6 +166,9 @@ code {
 .nav-links a:hover { color: var(--green); text-shadow: var(--glow-green); }
 
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--green) !important;
   color: var(--green) !important;
   padding: 0.3rem 0.8rem;
@@ -329,9 +332,10 @@ a[href*="github"].btn-secondary {
   border-color: var(--white);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
-a[href*="github"].btn-secondary:hover {
+a[href*="github"].btn-secondary:hover,
+.github-btn:hover {
   background: var(--white);
-  color: var(--bg);
+  color: var(--bg) !important;
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 }
 

@@ -85,6 +85,51 @@
     </div>
   </div>
 
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo mono">
+        <span class="accent-green">TupãStudios</span><span class="accent-cyan">©</span> <span id="footer-year"></span>
+      </div>
+      <div class="footer-links mono">
+        <a href="https://github.com/3-semestre-USJT/NOT-NOT-booleano-Tup-" target="_blank">GitHub</a>
+      </div>
+      <div class="footer-copy mono">
+        <span class="accent-red">! IndexError</span> — Desenvolvido no Brasil pela TupãStudios.
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="terminal-header" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div class="term-dots">
+            <span class="tm-dot red" id="chat-close-btn" style="cursor:pointer;" title="Fechar"></span>
+            <span class="tm-dot yellow" id="chat-expand-btn" style="cursor:pointer;" title="Expandir/Minimizar"></span>
+            <span class="tm-dot green"></span>
+          </div>
+          <span class="term-title mono" style="text-align: left;">paradox@tupa-studios</span>
+        </div>
+
+        <div class="mode-toggle-container" style="margin-top: 0;">
+          <button id="mode-toggle" class="mode-btn assistant" style="padding: 0.3rem 0.6rem;">ASSISTENTE</button>
+        </div>
+      </div>
+
+      <div class="terminal-body" id="terminal-body" style="flex: 1; max-height: none;"></div>
+
+      <div class="terminal-input-area">
+        <span class="input-prompt mono accent-cyan">~$</span>
+        <input type="text" id="terminal-input" class="terminal-input mono" placeholder="Digite 'ajuda' ou 'tutorial'..." autocomplete="off" />
+      </div>
+    </div>
+
+    <button class="chat-toggle-btn" id="chat-toggle-btn">
+      <span class="accent-cyan" style="font-size: 1.2rem;">&gt;_</span>
+      <span>Falar com Paradox</span>
+    </button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
