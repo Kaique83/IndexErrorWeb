@@ -992,8 +992,10 @@ a[href*="github"].btn-secondary:hover,
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  pointer-events: none;
 }
 
+   
 .chat-toggle-btn {
   background: var(--bg-card);
   border: 1px solid var(--cyan);
@@ -1008,6 +1010,8 @@ a[href*="github"].btn-secondary:hover,
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  pointer-events: auto;
+  
 }
 
 .chat-toggle-btn:hover {
