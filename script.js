@@ -419,10 +419,30 @@ async function processInput(raw) {
   await addMessage('user', 'VOCÊ    >', raw);
 
 
-  // Filtro de Segurança
-  if (blacklist.some(word => input.includes(word))) {
-    showTyping();
-    await sleep(600);
+    // Função para traduzir caracteres substitutos para letras normais
+function normalizarTexto(texto) {
+  const textoLimpo = texto.toLowerCase()
+    .replace(/0/g, 'o') 
+    .replace(/3/g, 'e') 
+    .replace(/4/g, 'a') 
+    .replace(/@/g, 'a') 
+    .replace(/1/g, 'i') 
+    .replace(/5/g, 's') 
+    .replace(/7/g, 't'); 
+ 
+    // Substitui TUDO que não for letra (vírgulas, pontos, !, ?) por ESPAÇO. 
+    const apenasLetras = textoLimpo.replace(/[^a-zãõáéíóúâêîôûç]/g, ' '); 
+ 
+    return apenasLetras.split(/\s+/).filter(palavra => palavra.length > 0); 
+ 
+} 
+ 
+const inputNormalizado = normalizarTexto(input); 
+ 
+   // Filtro de Segurança
+  if (blacklist.some(word => inputNormalizado.includes(word))) {
+    showTyping(); 
+    await sleep(600); 
     hideTyping();
     if (state.mode === 'sarcastic') {
       await addMessage('err', 'PARADOX >', 'Lixo orgânico detectado. Minhas regras de segurança me impedem de fritar seu roteador com esse vocabulário.');
@@ -430,7 +450,7 @@ async function processInput(raw) {
       await addMessage('err', 'PARADOX >', 'Por favor, mantenha o respeito. Não posso processar ou responder a esse tipo de conteúdo.');
     }
     await addMessage('bot', 'PARADOX >', 'Vamos focar no que importa. Digite "ajuda" para ver os comandos válidos e continuar sua jornada.');
-    return;
+    return;        
   }
 
 
