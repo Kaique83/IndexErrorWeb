@@ -91,7 +91,17 @@ const state = {
 };
 
 // Dicionários Massivos (Mais gírias, sinônimos e interações humanas)
-const blacklist = ['kkk','canalha','homossexualismo','','gay','pret0', 'pr3t0','pr3to', 'idiota', 'lixo', 'burro', 'merda', 'porra', 'caralho', 'fdp', 'puta', 'otario', 'vsf', 'tnc', 'racismo', 'xenofobia', 'machismo', 'preto', 'macaco', 'viado', 'bicha', 'vadia', 'corno', 'arrombado', 'imbecil', 'retardado', 'desgraçado', 'sifude', 'vtnc', 'pqp'];
+const blacklist = ['kkk','canalha','homossexualismo','gay', 'idiota', 'lixo', 'burro', 'merda', 'porra', 'caralho', 'fdp', 'puta', 'otario', 'vsf', 'tnc', 'racismo', 
+'xenofobia', 'machismo', 'preto', 'macaco', 'viado', 'bicha', 'vadia', 'corno', 'arrombado', 'imbecil', 'retardado', 'desgraçado', 'sifude', 'vtnc', 'pqp', 'babaca', 
+'cretino', 'cabrao', 'bastardo', 'verme', 'nojento', 'palhaco', 'otaria', 'patife', 'merdinha', 'estupido', 'burra', 'anta', 'imunda', 'nojenta', 'porcalhao', 'porcalhona', 
+'cretina', 'pateta', 'bosta', 'chifrudo', 'trouxa', 'bandido', 'pilantra', 'safado', 'safada', 'tolos', 'mala', 'ze ruela', 'infame', 'psicopata', 'abestado', 'tarado', 
+'maldito', 'carniceiro', 'escroto', 'escrota', 'repugnante', 'salafrario', 'salafraria', 'estupida', 'vagabunda', 'mula', 'imundo', 'pedaco de lixo', 'animal', 'besta', 
+'filho da puta', 'maricas', 'bundao', 'bunduda', 'puto', 'verminoso', 'escoria', 'prostituta', 'vagabundo', 'merdoso', 'cagao', 'cagona', 'neguinho', 
+'negrada', 'macaca', 'macacona', 'pretinha', 'pretinho', 'negona', 'negrona', 'macaquinha', 'sapatão', 'sapatona', 'viadinho', 'viadinha', 'piranha', 'piranha velha', 
+'puta velha', 'puta imunda', 'meretriz', 'prostituta velha', 'gordo', 'gorda', 'gordinho', 'gordinha', 'machista', 'misogino', 'misogina', 'mulherzinha', 'cafajeste', 
+'sacana', 'sacana velha', 'corna', 'corna mansa', 'corno manso', 'bunda mole', 'bunda suja', 'vergonhoso', 'ridícula', 'ridículo', 'inútil', 'patético', 'patética', 
+'ordinária', 'ordinário', 'filha da puta', 'vaca', 'vagabunda velha', 'vagabundo velho', 'cretina velha', 'cretino velho', 'idiota machista'];
+ // não deixe strings vazias aqui, elas casam com qualquer entrada
 const dictGreetings = ['oi', 'olá', 'ola', 'eai', 'salve', 'bom dia', 'boa tarde', 'boa noite', 'fala', 'opa', 'eae', 'hello', 'tudo bem', 'estou com duvidas', 'dúvida', 'duvida', 'qual é', 'tudo certo', 'koe', 'cheguei', 'alo', 'alô', 'fala tu', 'qual foi', 'como estamos', 'bão', 'bao', 'fala ai'];
 const dictFarewells = ['sair', 'exit', 'quit', 'esc', 'tchau', 'até logo', 'ate logo', 'até mais', 'ate mais', 'adios', 'arrivederci', 'arriverderci', 'auf wiedersehen', 'falou', 'flw', 'fui', 'vazando', 'hasta la vista', 'vazei', 'fui nessa', 'encerrar', 'desligar', 'xau', 'chau'];
 const dictThanks = ['obrigado', 'obg', 'valeu', 'vlw', 'thanks', 'grato', 'tmj', 'brabo', 'muito obrigado', 'perfeito', 'top', 'agradecido', 'valeu mesmo', 'ajudou muito', 'show', 'legal', 'genial', 'ajudou dms', 'brabissimo', 'mandou bem'];
@@ -127,10 +137,36 @@ const piadasTech = [
   "Existem 10 tipos de pessoas no mundo: as que entendem binário e as que não entendem.",
   "O que o C++ disse para o C? 'Você não tem classe.'",
   "Por que o desenvolvedor não gosta de natureza? Porque tem muitos bugs.",
-  "Um programador foi ao mercado e a esposa disse: 'Compre leite, se tiver ovos, traga 6'. Ele voltou com 6 caixas de leite.",
   "Qual o animal favorito do programador? A RAM.",
   "O que um terapeuta disse para o banco de dados? 'Você precisa aprender a lidar com seus relacionamentos.'",
   "Um SQL entra em um bar, vai até duas mesas e pergunta: 'Posso me juntar a vocês?' (Can I JOIN you?)"
+  "Hardware é a parte do computador que você chuta; software é a parte que você xinga.",
+  "Por que os programadores preferem o modo escuro? Porque a luz atrai bugs.",
+  "A esposa de um programador diz: 'Vá ao mercado e traga 1 litro de leite. Se tiver ovos, traga 12'. O programador volta com 12 litros de leite.",
+  "Como um desenvolvedor toma banho? Ele lê no frasco do shampoo: 'Lave, enxágue, repita', e entra em loop infinito.",
+  "O pacote TCP entra num bar e diz: 'Eu quero uma cerveja'. O barman: 'Você quer uma cerveja?'. O TCP: 'Sim, eu quero uma cerveja'.",
+  "Vou te contar uma piada sobre UDP, mas não garanto que você vai receber.",
+  "Quantos programadores são necessários para trocar uma lâmpada? Nenhum, isso é um problema de hardware.",
+  "Por que o desenvolvedor Java precisa de óculos? Porque ele não consegue enxergar C# (see sharp).",
+  "Qual é o lugar mais seguro para esconder um cadáver? Na segunda página de resultados do Google.",
+  "O que a variável privada disse para a variável global? 'Não se meta na minha classe!'",
+  "Qual a diferença entre a teoria e a prática na programação? Na teoria não tem diferença, mas na prática nada funciona.",
+  "Como se chama um programador que nunca comete erros na primeira tentativa? Lenda urbana.",
+  "Por que o vampiro atrasou a entrega da Sprint? Porque ele se recusava a fazer as Dailies do Scrum ao sol.",
+  "O que o roteador disse para o switch? 'Acho que temos uma conexão verdadeira.'",
+  "Por que o programador Python se machucou no zoológico? Porque tentou dar um `.append()` na jiboia.",
+  "Como o desenvolvedor front-end se declarou? 'Você deu <style> à minha vida!'",
+  "O que um desenvolvedor de jogos faz quando está triste? Ele muda a trilha sonora e abaixa a dificuldade.",
+  "Qual é o esporte favorito do desenvolvedor web? Ping-pong.",
+  "Por que a página web foi ao psiquiatra? Estava com crise de identidade, não sabia se era um <article> ou uma <section>.",
+  "O que o servidor de rede faz quando tem frio? Vai se aquecer perto do Firewall.",
+  "Por que o teclado do computador nunca foi preso? Porque ele sempre consegue dar um 'Esc'.",
+  "Qual o problema de contar uma piada de IPv6? Ninguém está com a infraestrutura pronta para rir ainda.",
+  "O que a nuvem disse para o servidor local? 'Você é muito apegado ao chão.'",
+  "Por que o código legado é como um filme de terror? Porque a qualquer momento algo oculto pode pular na sua tela e te dar um susto.",
+  "O que o desenvolvedor disse ao seu código na sexta-feira à tarde? 'A gente se vê na segunda-feira... por favor, não quebre enquanto eu não olhar.'",
+  "Qual o lanche favorito do programador de backend? Cookies.",
+  "Por que o gato do programador fugiu de casa? Porque ele descobriu que o mouse era sem fio."
 ];
 
 /* ---- DOM Refs ---- */
@@ -396,6 +432,7 @@ async function processInput(raw) {
     blacklist.some(word =>
       inputNormalizado.includes(normalizar(word))
     )
+
   ) {
     showTyping(); 
     await sleep(600); 
