@@ -91,15 +91,26 @@ const state = {
 };
 
 // Dicionários Massivos (Mais gírias, sinônimos e interações humanas)
-const blacklist = ['idiota', 'lixo', 'burro', 'merda', 'porra', 'caralho', 'fdp', 'puta', 'otario', 'vsf', 'tnc', 'racismo', 'xenofobia', 'machismo', 'preto', 'macaco', 'viado', 'bicha', 'vadia', 'corno', 'arrombado', 'imbecil', 'retardado', 'desgraçado', 'sifude', 'vtnc', 'pqp'];
+const blacklist = ['kkk','canalha','homossexualismo','','gay','pret0', 'pr3t0','pr3to', 'idiota', 'lixo', 'burro', 'merda', 'porra', 'caralho', 'fdp', 'puta', 'otario', 'vsf', 'tnc', 'racismo', 'xenofobia', 'machismo', 'preto', 'macaco', 'viado', 'bicha', 'vadia', 'corno', 'arrombado', 'imbecil', 'retardado', 'desgraçado', 'sifude', 'vtnc', 'pqp'];
 const dictGreetings = ['oi', 'olá', 'ola', 'eai', 'salve', 'bom dia', 'boa tarde', 'boa noite', 'fala', 'opa', 'eae', 'hello', 'tudo bem', 'estou com duvidas', 'dúvida', 'duvida', 'qual é', 'tudo certo', 'koe', 'cheguei', 'alo', 'alô', 'fala tu', 'qual foi', 'como estamos', 'bão', 'bao', 'fala ai'];
 const dictFarewells = ['sair', 'exit', 'quit', 'esc', 'tchau', 'até logo', 'ate logo', 'até mais', 'ate mais', 'adios', 'arrivederci', 'arriverderci', 'auf wiedersehen', 'falou', 'flw', 'fui', 'vazando', 'hasta la vista', 'vazei', 'fui nessa', 'encerrar', 'desligar', 'xau', 'chau'];
 const dictThanks = ['obrigado', 'obg', 'valeu', 'vlw', 'thanks', 'grato', 'tmj', 'brabo', 'muito obrigado', 'perfeito', 'top', 'agradecido', 'valeu mesmo', 'ajudou muito', 'show', 'legal', 'genial', 'ajudou dms', 'brabissimo', 'mandou bem'];
 const dictHelp = ['ajuda', 'help', 'comandos', 'menu', 'o que fazer', 'sos', 'regras', 'como joga', 'instruções', 'manual', 'nao entendi', 'o que é isso', 'start', 'socorro', 'nao sei o que fazer', 'me ajuda', 'dica'];
-const dictJokes = ['piada', 'conta uma piada', 'me faça rir', 'engraçado', 'humor', 'conta outra', 'piadinha', 'faz uma piada', 'me diverte', 'meme', 'faz uma graca', 'conta algo engracado'];
+const dictJokes = ['piada','piadas', 'conta uma piada', 'me faça rir', 'engraçado', 'humor', 'conta outra', 'piadinha', 'faz uma piada', 'me diverte', 'meme', 'faz uma graca', 'conta algo engracado'];
 const dictCredits = ['creditos', 'equipe', 'criadores', 'integrantes', 'kaique', 'igor', 'kaique dias', 'kaique oliveira', 'igor navarro', 'devs', 'desenvolvedores', 'autores', 'quem fez', 'sobre o jogo', 'quem programou'];
 const dictAffirmative = ['sim', 's', 'claro', 'com certeza', 'bora', 'vamos', 'quero', 'yep', 'yes', 'pode pá', 'logico', 'obvio', 'partiu'];
 const dictNegative = ['nao', 'não', 'n', 'nem', 'chega', 'parar', 'nunca', 'nope', 'jamais', 'negativo', 'to de boa', 'deixa pra la'];
+
+function normalizar(texto) {
+  return texto
+  .toLowerCase()
+  .replace(/0/g,"o")
+  .replace(/4/g,"a")
+  .replace(/3/g,"e")
+  .replace(/[@]/g,"a")
+  .replace(/[$]/g,"s")
+  .replace(/[^a-z0-9]/g,"");
+}
 
 const TODOS = ['cima', 'baixo', 'esquerda', 'direita'];
 const REPRESENTACOES = {
@@ -107,6 +118,8 @@ const REPRESENTACOES = {
   "OR": ["OR", "V", "||", "+", "OU"],
   "AND": ["AND", "^", "&&", "*", "E"]
 };
+
+
 
 // Respostas Variáveis (Sorteio) - Agora com mais piadas
 const piadasTech = [
@@ -378,7 +391,12 @@ async function processInput(raw) {
   await addMessage('user', 'VOCÊ    >', raw);
 
   // Filtro de Segurança
-  if (blacklist.some(word => input.includes(word))) {
+  const inputNormalizado = normalizar(input);
+  if (
+    blacklist.some(word =>
+      inputNormalizado.includes(normalizar(word))
+    )
+  ) {
     showTyping(); 
     await sleep(600); 
     hideTyping();
