@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="IndexError favicon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#00ff41"/>
+      <stop offset="100%" stop-color="#00e5ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" ry="12" fill="#0a0a0c"/>
+  <path d="M32 12 L22 44 L28 44 L30 36 H34 L36 44 L42 44 Z" fill="url(#g)"/>
+  <circle cx="32" cy="52" r="4" fill="url(#g)"/>
+</svg>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -213,4 +214,199 @@
   </script>
   <script src="script.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Acadêmico — TupãStudios</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-content { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; text-align: center; }
+    
+    .company-desc { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; border-radius: 4px; text-align: left; margin-bottom: 3rem; border-left: 4px solid var(--green); }
+    .company-desc p { margin-bottom: 1rem; font-size: 0.95rem; color: var(--white); opacity: 0.9; line-height: 1.8; }
+    .company-desc p:last-child { margin-bottom: 0; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .team-member { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; border-radius: 4px; transition: transform 0.2s; }
+    .team-member:hover { transform: translateY(-5px); border-color: var(--green); }
+    .team-member h3 { font-family: var(--font-pixel); color: var(--white); font-size: 0.8rem; margin-bottom: 0.8rem; line-height: 1.4; }
+
+    /* NOVA SEÇÃO: PALETA DE CORES */
+    .palette-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; margin-bottom: 4rem;}
+    .color-swatch { width: 120px; height: 120px; border-radius: 8px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+    .swatch-hex { font-family: var(--font-mono); font-size: 0.7rem; font-weight: bold; background: rgba(0,0,0,0.7); padding: 4px; border-radius: 4px; text-align: center; }
+    
+    /* LORE ESCONDIDA */
+    .lore-section { margin-top: 4rem; background: rgba(255, 43, 43, 0.05); padding: 3rem 2rem; border: 1px solid var(--red); border-radius: 4px; text-align: left; display: none; animation: glitch-reveal 0.5s ease; }
+    @keyframes glitch-reveal { 0% { opacity: 0; transform: scale(0.98) translate(-5px, 5px); } 100% { opacity: 1; transform: scale(1) translate(0, 0); } }
+    .lore-section h2 { font-family: var(--font-pixel); color: var(--red); font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; text-shadow: var(--glow-red);}
+    .lore-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px dashed rgba(255, 43, 43, 0.3); }
+    .lore-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+    
+    .secret-trigger { cursor: pointer; user-select: none; transition: color 0.2s; }
+  </style>
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">
+      &gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tutorial.html">Aprenda a Jogar</a></li>
+      <li><a href="tupa.html" class="accent-green">Projeto Acadêmico</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <div class="about-content">
+    <div class="section-header">
+      <span class="section-tag mono secret-trigger" id="lore-trigger" title="Arquivo de sistema bloqueado...">&gt; ABOUT_US.exe</span>
+      <h2 class="section-title">O <span class="accent-green">Projeto Acadêmico</span></h2>
+      <p class="section-sub">UC Exploração Digital — Universidade São Judas Tadeu (2026)</p>
+    </div>
+
+    <div class="company-desc mono">
+      <p>Este portal e o <strong>Assistente Virtual Paradox</strong> são frutos de um <strong>Projeto Acadêmico (Projeto A3)</strong>, desenvolvido exclusivamente para a Unidade Curricular de <span class="accent-cyan">Exploração Digital</span>, sob a orientação da <span class="accent-yellow">Profª. Denise Neves</span>.</p>
+      
+      <p>O objetivo central do projeto foi criar um site de divulgação interativo e dinâmico para o jogo educacional <strong>! IndexError</strong>, utilizando recursos avançados de Inteligência Artificial para otimização de código, geração de fluxos de conversação e prototipagem na plataforma de desenvolvimento.</p>
+
+      <p>O ecossistema é mantido pela equipe fictícia <span class="accent-green">TupãStudios</span>, responsável por transmutar conceitos teóricos complexos (Lógica Booleana) numa interface imersiva de terminal retro-futurista.</p>
+    </div>
+
+    <h2 class="section-title" style="font-size: 1.2rem; margin-top: 4rem; margin-bottom: 1rem;">Paleta de <span class="accent-cyan">Cores</span></h2>
+    <p class="mono" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem;">A identidade visual cyberpunk e de terminal prioriza cores neon vibrantes sobre um fundo escuro, garantindo alto contraste. A cor predominante da marca e do produto é o <strong>Verde Matrix</strong>.</p>
+    
+    <div class="palette-container">
+      <div class="color-swatch" style="background-color: #00ff41; box-shadow: 0 0 15px rgba(0,255,65,0.4);">
+        <span class="swatch-hex" style="color: #00ff41;"br>#00FF41</span>
+      </div>
+      <div class="color-swatch" style="background-color: #00e5ff;">
+        <span class="swatch-hex" style="color: #00e5ff;">#00E5FF</span>
+      </div>
+      <div class="color-swatch" style="background-color: #ff2b2b;">
+        <span class="swatch-hex" style="color: #ff2b2b;">#FF2B2B</span>
+      </div>
+      <div class="color-swatch" style="background-color: #ffe000;">
+        <span class="swatch-hex" style="color: #ffe000;">#FFE000</span>
+      </div>
+      <div class="color-swatch" style="background-color: #0a0a0c;">
+        <span class="swatch-hex" style="color: #fff;">Fundo<br>#0A0A0C</span>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="font-size: 1.2rem; margin-top: 4rem; margin-bottom: 2rem;">Os <span class="accent-yellow">Autores</span></h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <h3>Kaique Dias</h3>
+        <p class="mono accent-green">Arquiteto & Dev</p>
+      </div>
+      <div class="team-member">
+        <h3>Kaique Oliveira</h3>
+        <p class="mono accent-cyan">Lógica & Dev</p>
+      </div>
+      <div class="team-member">
+        <h3>Igor Navarro</h3>
+        <p class="mono accent-red">Design & Dev</p>
+      </div>
+    </div>
+
+    <div class="lore-section" id="secret-lore">
+      <h2>⚠️ ARQUIVOS DA TUPÃ DESBLOQUEADOS ⚠️</h2>
+      <div class="lore-item">
+        <h3 class="accent-yellow mono">&gt; Operação Igor Furlobo</h3>
+        <p class="mono">Reza a lenda na TupãStudios que o email do Igor na verdade é "igorfurabolo". Enquanto os dois Kaiques codam, o Igor garante o nível de açúcar do time roubando doces na calada da noite.</p>
+      </div>
+      <div class="lore-item">
+        <h3 class="accent-cyan mono">&gt; Segurança Nível Unicórnio</h3>
+        <p class="mono">A sala de servidores da Matriz é guardada por um unicórnio tático. É ele quem reinicia os roteadores quando o ping do jogo sobe.</p>
+      </div>
+      <div class="lore-item">
+        <h3 class="accent-red mono">&gt; O Módulo Italiano (Paradox)</h3>
+        <p class="mono">Durante madrugadas intensas de código, o bot Paradox herdou o espírito das pistas. Experimente falar sobre "Francesco Virgolini" no Chatbot e veja o sotaque italiano assumir o controle.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const trigger = document.getElementById('lore-trigger');
+    const loreSection = document.getElementById('secret-lore');
+    let clickCount = 0;
+    let clickTimer;
+
+    trigger.addEventListener('click', () => {
+      clickCount++;
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
+
+      if (clickCount === 1) trigger.style.color = 'var(--yellow)';
+      if (clickCount === 2) trigger.style.color = 'var(--red)';
+
+      if (clickCount === 3) {
+        trigger.textContent = '> ACESSO_CONCEDIDO';
+        trigger.style.color = 'var(--green)';
+        loreSection.style.display = 'block';
+        setTimeout(() => { loreSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        trigger.style.pointerEvents = 'none';
+      }
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo mono">
+        <span class="accent-green">TupãStudios</span><span class="accent-cyan">©</span> <span id="footer-year"></span>
+      </div>
+      <div class="footer-links mono">
+        <a href="https://github.com/3-semestre-USJT/NOT-NOT-booleano-Tup-" target="_blank">GitHub</a>
+      </div>
+      <div class="footer-copy mono">
+        <span class="accent-red">! IndexError</span> — Desenvolvido no Brasil pela TupãStudios.
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="terminal-header" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div class="term-dots">
+            <span class="tm-dot red" id="chat-close-btn" style="cursor:pointer;" title="Fechar"></span>
+            <span class="tm-dot yellow" id="chat-expand-btn" style="cursor:pointer;" title="Expandir/Minimizar"></span>
+            <span class="tm-dot green"></span>
+          </div>
+          <span class="term-title mono" style="text-align: left;">paradox@tupa-studios</span>
+        </div>
+
+        <div class="mode-toggle-container" style="margin-top: 0;">
+          <button id="mode-toggle" class="mode-btn assistant" style="padding: 0.3rem 0.6rem;">ASSISTENTE</button>
+        </div>
+      </div>
+
+      <div class="terminal-body" id="terminal-body" style="flex: 1; max-height: none;"></div>
+
+      <div class="terminal-input-area">
+        <span class="input-prompt mono accent-cyan">~$</span>
+        <input type="text" id="terminal-input" class="terminal-input mono" placeholder="Digite 'ajuda' ou 'tutorial'..." autocomplete="off" />
+      </div>
+    </div>
+
+    <button class="chat-toggle-btn" id="chat-toggle-btn">
+      <span class="accent-cyan" style="font-size: 1.2rem;">&gt;_</span>
+      <span>Falar com Paradox</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+>>>>>>> origin/main
 </html>

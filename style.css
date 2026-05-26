@@ -24,7 +24,7 @@
   --yellow:      #ffe000;
   --yellow-dim:  #c8a800;
   --white:       #e8e8e8;
-  --muted:       #4a4a5a;
+  --muted:       #8b8b9e;
   --border:      #1e1e28;
   --font-pixel:  'Press Start 2P', monospace;
   --font-mono:   'Fira Code', 'Courier New', monospace;
@@ -166,6 +166,9 @@ code {
 .nav-links a:hover { color: var(--green); text-shadow: var(--glow-green); }
 
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--green) !important;
   color: var(--green) !important;
   padding: 0.3rem 0.8rem;
@@ -268,37 +271,72 @@ code {
 .btn-primary, .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1.8rem;
+  justify-content: center; /* Centraliza o conteúdo */
+  gap: 0.8rem;
+  padding: 1rem 2rem;
   font-family: var(--font-pixel);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   text-decoration: none;
   letter-spacing: 1px;
-  border-radius: 2px;
-  transition: all 0.2s;
+  border-radius: 4px;
+  transition: all 0.3s ease;
   cursor: pointer;
   border: 2px solid transparent;
+  text-transform: uppercase;
+
+  line-height: 1.6; 
+  text-align: center; 
+  white-space: normal; 
+  
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-transform: uppercase;
 }
 
+/* Botão Principal (Projeto Acadêmico) */
 .btn-primary {
-  background: var(--green);
-  color: var(--bg);
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--green);
   border-color: var(--green);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
 }
 .btn-primary:hover {
-  background: transparent;
-  color: var(--green);
+  background: var(--green);
+  color: var(--bg);
   box-shadow: var(--glow-green);
+  transform: translateY(-3px);
 }
 
+/* Botão Secundário (Tutorial) */
 .btn-secondary {
-  background: transparent;
+  background: rgba(0, 229, 255, 0.1);
   color: var(--cyan);
   border-color: var(--cyan);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
 }
 .btn-secondary:hover {
-  background: rgba(0,229,255,0.1);
+  background: var(--cyan);
+  color: var(--bg);
   box-shadow: var(--glow-cyan);
+  transform: translateY(-3px);
+}
+
+/* Botão GitHub (Específico) */
+a[href*="github"].btn-secondary {
+  background: rgba(232, 232, 232, 0.1);
+  color: var(--white);
+  border-color: var(--white);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+a[href*="github"].btn-secondary:hover,
+.github-btn:hover {
+  background: var(--white);
+  color: var(--bg) !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 }
 
 .btn-icon { font-size: 0.8rem; }
@@ -378,6 +416,165 @@ code {
   margin: 0 auto;
 }
 
+/* Animações para páginas de conteúdo */
+.section-header,
+.about-content,
+.tutorial-content,
+.company-desc,
+.tut-step,
+.team-member,
+.lore-item,
+.color-swatch {
+  opacity: 0;
+  animation: fade-up 0.8s ease both;
+}
+
+.section-header {
+  animation-delay: 0.1s;
+}
+
+.about-content,
+.tutorial-content {
+  animation-delay: 0.15s;
+}
+
+.company-desc,
+.tut-step,
+.team-member,
+.lore-item,
+.color-swatch {
+  animation-delay: 0.2s;
+}
+
+.color-swatch:nth-child(1) { animation-delay: 0.25s; }
+.color-swatch:nth-child(2) { animation-delay: 0.30s; }
+.color-swatch:nth-child(3) { animation-delay: 0.35s; }
+.color-swatch:nth-child(4) { animation-delay: 0.40s; }
+.color-swatch:nth-child(5) { animation-delay: 0.45s; }
+
+.tut-step:nth-of-type(odd) { animation-delay: 0.22s; }
+.tut-step:nth-of-type(even) { animation-delay: 0.28s; }
+.team-member:nth-child(1) { animation-delay: 0.24s; }
+.team-member:nth-child(2) { animation-delay: 0.30s; }
+.team-member:nth-child(3) { animation-delay: 0.36s; }
+.lore-item:nth-child(1) { animation-delay: 0.24s; }
+.lore-item:nth-child(2) { animation-delay: 0.30s; }
+.lore-item:nth-child(3) { animation-delay: 0.36s; }
+
+/* =========================================================
+   ESTILOS DA LANDING PAGE INSTITUCIONAL (index.html)
+   ========================================================= */
+
+.home-features {
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--green);
+  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.05);
+}
+
+/* Detalhe da borda superior colorida em cada card */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--green);
+  opacity: 0.8;
+}
+.feature-card:nth-child(1)::before { background: var(--cyan); }
+.feature-card:nth-child(2)::before { background: var(--red); }
+.feature-card:nth-child(3)::before { background: var(--yellow); }
+
+.fc-icon {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.feature-card p {
+  font-size: 0.85rem;
+  color: var(--white);
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+.home-boot {
+  background: rgba(0, 255, 65, 0.02);
+  border-top: 1px solid rgba(0, 255, 65, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+  padding: 5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.boot-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.boot-steps {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  border-radius: 8px;
+  text-align: left;
+  display: inline-block;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  width: 100%;
+  max-width: 600px;
+}
+
+.boot-steps p {
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--white);
+  opacity: 0.85;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+  padding-bottom: 1.2rem;
+}
+.boot-steps p:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Responsividade extra para os passos de boot */
+@media (max-width: 768px) {
+  .boot-steps {
+    padding: 1.5rem;
+  }
+  .boot-steps p {
+    font-size: 0.85rem;
+  }
+}
+
 /* ---- ABOUT SECTION ---- */
 .about-grid {
   display: grid;
@@ -391,7 +588,7 @@ code {
   color: var(--white);
   margin-bottom: 1.2rem;
   line-height: 1.8;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* Terminal Mockup (hero preview) */
@@ -704,6 +901,8 @@ code {
 @media (max-width: 768px) {
   .hamburger { display: block; }
 
+  
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -793,8 +992,10 @@ code {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  pointer-events: none;
 }
 
+   
 .chat-toggle-btn {
   background: var(--bg-card);
   border: 1px solid var(--cyan);
@@ -809,6 +1010,8 @@ code {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  pointer-events: auto;
+  
 }
 
 .chat-toggle-btn:hover {
@@ -898,4 +1101,107 @@ body {
     position: relative;
     margin: 0;
     background-color: #000; /* Ou a cor de fundo do teu site */
+}
+
+/* =========================================================
+   REFORMULAÇÃO DA SEÇÃO DOS 5 NÍVEIS (BOSS CARD) - CORREÇÃO
+   ========================================================= */
+
+/* Em telas grandes (PC), o Nível 5 ocupa as 2 colunas que sobram ao lado do Nível 4 */
+@media (min-width: 1024px) {
+  .boss-card {
+    grid-column: span 2; /* A mágica está aqui: mudamos de 3 para 2 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+    text-align: center;
+  }
+  .boss-card .cmd-example {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .boss-card .level-desc {
+    max-width: 90%;
+  }
+}
+
+/* Em telas médias (Tablets) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .boss-card {
+    grid-column: span 2;
+  }
+}
+
+/* Efeito visual "Perigoso" exclusivo para o Nível 5 */
+.boss-card {
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-top: 2px solid var(--white) !important;
+  animation: pulse-boss 3s infinite alternate;
+}
+
+@keyframes pulse-boss {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.02); }
+  100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.15); }
+}
+
+/* Efeito 3D nos cards ao passar o mouse */
+.level-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s;
+}
+.level-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  z-index: 2;
+}
+
+/* =========================================================
+   AJUSTES FINOS DE UX: ESPAÇAMENTOS (GAPS) E RESPONSIVIDADE
+   ========================================================= */
+
+/* 1. Reduzindo o espaçamento exagerado no Desktop */
+.section-about, 
+.section-mechanics, 
+.section-terminal {
+  padding: 4.5rem 0; /* Era 6rem */
+}
+
+.home-features {
+  padding: 4.5rem 2rem; /* Era 6rem */
+}
+
+.home-boot {
+  padding: 4rem 2rem; /* Era 5rem */
+  margin-bottom: 0; /* Remove a margem extra que criava um buraco abaixo desta seção */
+}
+
+/* 2. Otimizando os espaços drasticamente para Celulares (Mobile) */
+@media (max-width: 768px) {
+  .section-about, 
+  .section-mechanics, 
+  .section-terminal {
+    padding: 3rem 0; /* Metade do tamanho original no celular */
+  }
+  
+  .home-features {
+    padding: 3rem 1.5rem;
+  }
+  
+  .home-boot {
+    padding: 3rem 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  /* Aproxima os Títulos do conteúdo para não parecerem desconectados */
+  .section-header {
+    margin-bottom: 2rem; 
+  }
+  
+  /* Ajusta a grade de recursos (System Modules) para ficar mais coesa no celular */
+  .features-grid {
+    gap: 1.2rem;
+  }
+  
+  .mechanics-grid {
+    gap: 1.2rem;
+  }
 }
