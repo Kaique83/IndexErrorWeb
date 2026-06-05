@@ -412,6 +412,9 @@ async function boot() {
   }
   await addMessage('sys', 'SISTEMA >', 'Inicializando Terminal da TupãStudios...', 0);
   await addMessage('bot', 'PARADOX >', 'Olá! Bem-vindo ao terminal do ! IndexError. Como posso ajudar? Digite "tutorial" para aprender as regras ou "desafio" se já estiver pronto para jogar.', 800);
+  
+  // Inicia o cronômetro de inatividade
+  startIdleTimer();
 }
 
 
@@ -504,6 +507,12 @@ const inputNormalizado = normalizarTexto(input);
     await sleep(500);
     hideTyping();
     await addMessage('sys', 'SISTEMA >', `Sequência brutal de ${num} desafios iniciada. Errar resulta em Game Over imediato.`);
+    
+    // UX: Mensagem de acessibilidade para setas e swipe
+    await sleep(400);
+    await addMessage('sys', 'DICA UX >', 'Para maior agilidade, utilize as SETAS DO TECLADO (PC) ou ARRASTE O DEDO na tela (Celular) nas direções desejadas!');
+    await sleep(800);
+    
     await nextChallenge();
     return;
   }
@@ -721,27 +730,37 @@ const mapSetas = {
 };
 
 termInput.addEventListener('keydown', async (e) => {
-  // Lógica das Setinhas (Só funciona se estiver no desafio ou tutorial)
-  if ((state.challengeActive || state.inTutorial) && mapSetas[e.key]) {
-    e.preventDefault(); // Impede que o cursor do teclado se mova sozinho
-    const direcao = mapSetas[e.key];
-    
-    termInput.value = ''; // Limpa o que estiver escrito
-    termInput.disabled = true;
-    await processInput(direcao);
-    termInput.disabled = false;
-    termInput.focus();
-    return; // Para a execução aqui para não acionar o Enter
+  let val = termInput.value;
+  let isSeta = false;
+
+  // UX: Se apertou uma seta DURANTE o jogo ou tutorial, mapeamos o valor
+  if (mapSetas[e.key] && (state.challengeActive || state.inTutorial)) {
+    e.preventDefault(); // Evita que o cursor se mova dentro do input
+    val = mapSetas[e.key];
+    isSeta = true; // Sinaliza que o comando veio pelas setas
   }
 
-  // Lógica padrão da tecla Enter
-  if (e.key === 'Enter') {
-    const val = termInput.value;
+  // Executa se o usuário apertou Enter OU se apertou uma seta válida no momento certo
+  if (e.key === 'Enter' || isSeta) {
+    
+    // Bloqueia submits completamente vazios (se não for seta)
+    if (!isSeta && !val.trim()) return; 
+
     termInput.value = '';
     termInput.disabled = true;
+    termInput.placeholder = "Processando dados..."; // UX Feedback visual
+
+    // Pausa o timer de inatividade (se ele estiver implementado)
+    if (typeof idleTimer !== 'undefined') clearTimeout(idleTimer);
+
     await processInput(val);
+
     termInput.disabled = false;
+    termInput.placeholder = "Digite 'ajuda' ou 'tutorial'..."; // Restaura o visual
     termInput.focus();
+    
+    // Reinicia o timer de inatividade
+    if (typeof startIdleTimer === 'function') startIdleTimer();
   }
 });
 
@@ -751,5 +770,97 @@ termInput.addEventListener('focus', () => {
     document.getElementById('terminal')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 300);
 });
+
+/* =========================================================
+   8. SISTEMA DE GESTOS (Swipe para Mobile)
+   ========================================================= */
+let touchStartX = 0;
+let touchStartY = 0;
+
+// Captura a posição inicial do dedo
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+// Captura a posição final e calcula a direção
+document.addEventListener('touchend', async (e) => {
+  // UX: Só processa o gesto se o usuário estiver jogando ou no tutorial
+  if (!state.challengeActive && !state.inTutorial) return;
+
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+  
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+  
+  // Limite mínimo de arrasto (30px) para ignorar toques normais (taps) na tela
+  const threshold = 30; 
+  let swipeDir = '';
+
+  // Descobre se o movimento foi mais forte na horizontal ou na vertical
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Eixo Horizontal
+    if (Math.abs(deltaX) > threshold) {
+      swipeDir = deltaX > 0 ? 'direita' : 'esquerda';
+    }
+  } else {
+    // Eixo Vertical
+    if (Math.abs(deltaY) > threshold) {
+      swipeDir = deltaY > 0 ? 'baixo' : 'cima';
+    }
+  }
+
+  // Se um gesto válido foi detectado, processa o comando igual ao teclado
+  if (swipeDir) {
+    termInput.disabled = true;
+    termInput.placeholder = "Processando dados..."; // UX Feedback visual
+
+    // Pausa o timer de inatividade
+    if (typeof idleTimer !== 'undefined') clearTimeout(idleTimer);
+
+    await processInput(swipeDir);
+
+    termInput.disabled = false;
+    termInput.placeholder = "Digite 'ajuda' ou 'tutorial'..."; // Restaura o visual
+    
+    // Reinicia o timer
+    if (typeof startIdleTimer === 'function') startIdleTimer();
+  }
+});
+
+/* =========================================================
+   9. SISTEMA DE INATIVIDADE (UX IDLE TIMEOUT)
+   ========================================================= */
+let idleTimer;
+const IDLE_TIME = 120000; // 2 minutos em milissegundos
+
+function startIdleTimer() {
+  clearTimeout(idleTimer);
+  
+  idleTimer = setTimeout(async () => {
+    // Só instiga se o usuário não estiver no meio de um jogo ou tutorial
+    if (!state.challengeActive && !state.challengeSetup && !state.inTutorial) {
+      showTyping();
+      await sleep(10);
+      hideTyping();
+      
+      const idleMessagesAssistant = [
+        'Tudo certo por aí? Lembre-se que você pode digitar "ajuda" para ver os comandos.',
+        'Estou aguardando suas instruções! Que tal um "desafio"?',
+        'Sistemas ociosos. Digite "tutorial" se quiser relembrar a aula de lógica.'
+      ];
+      
+      const idleMessagesSarcastic = [
+        'Ainda está aí? Meu processador está esfriando com essa sua demora.',
+        'Alô? Dormiu no teclado? Digita logo alguma coisa.',
+        'Eu tenho o tempo todo do mundo, mas achei que humanos tivessem pressa. Vai um "desafio" ou vai arregar?'
+      ];
+
+      const msg = state.mode === 'sarcastic' ? randFrom(idleMessagesSarcastic) : randFrom(idleMessagesAssistant);
+      await addMessage('bot', 'PARADOX >', msg);
+    }
+  }, IDLE_TIME);
+}
 
 boot();
