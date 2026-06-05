@@ -713,7 +713,28 @@ const inputNormalizado = normalizarTexto(input);
 
 
 /* ---- INPUT HANDLER ---- */
+const mapSetas = {
+  'ArrowUp': 'cima',
+  'ArrowDown': 'baixo',
+  'ArrowLeft': 'esquerda',
+  'ArrowRight': 'direita'
+};
+
 termInput.addEventListener('keydown', async (e) => {
+  // Lógica das Setinhas (Só funciona se estiver no desafio ou tutorial)
+  if ((state.challengeActive || state.inTutorial) && mapSetas[e.key]) {
+    e.preventDefault(); // Impede que o cursor do teclado se mova sozinho
+    const direcao = mapSetas[e.key];
+    
+    termInput.value = ''; // Limpa o que estiver escrito
+    termInput.disabled = true;
+    await processInput(direcao);
+    termInput.disabled = false;
+    termInput.focus();
+    return; // Para a execução aqui para não acionar o Enter
+  }
+
+  // Lógica padrão da tecla Enter
   if (e.key === 'Enter') {
     const val = termInput.value;
     termInput.value = '';
@@ -724,13 +745,11 @@ termInput.addEventListener('keydown', async (e) => {
   }
 });
 
-
 // Auto-scroll suave para o input em dispositivos menores
 termInput.addEventListener('focus', () => {
   setTimeout(() => {
     document.getElementById('terminal')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 300);
 });
-
 
 boot();
