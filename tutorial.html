@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial — ! IndexError</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tutorial-content { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+    .tut-step { background: var(--bg-card); border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--cyan); border-radius: 4px;}
+    .tut-step h3 { font-family: var(--font-pixel); color: var(--cyan); font-size: 1rem; margin-bottom: 1rem; line-height: 1.5; }
+    .tut-step p { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8; opacity: 0.9;}
+    .tut-example { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 4px; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">
+      &gt; <span class="accent-green">TUPÃ</span><span class="accent-cyan">STUDIOS</span><span class="blink">_</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tutorial.html" class="accent-cyan">Aprenda a Jogar</a></li>
+      <li><a href="tupa.html">Projeto Acadêmico</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <div class="tutorial-content">
+    <div class="section-header">
+      <span class="section-tag mono">&gt; MASTERCLASS.exe</span>
+      <h2 class="section-title">Manual de <span class="accent-cyan">Sobrevivência</span></h2>
+      <p class="section-sub">Entenda como o computador processa as expressões booleanas com as mesmas analogias do nosso assistente Paradox.</p>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--white);">
+      <h3 style="color: var(--white);">1. O Básico</h3>
+      <p class="mono">O nosso ambiente possui 4 direções cardeais puras: CIMA, BAIXO, ESQUERDA e DIREITA. O computador lê exatamente o que está escrito. Se não houver nenhum símbolo estranho e a tela disser "CIMA", a resposta óbvia é ir para Cima.</p>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--green);">
+      <h3 style="color: var(--green);">2. A Regra da Negação (!, NOT, ¬)</h3>
+      <p class="mono">A negação inverte a verdade. Pense no "!" como uma placa de "PROIBIDO". Se o comando tem um "!", aquela direção se torna um campo minado fatal. Significa "Qualquer coisa, menos essa direção".</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span> ESQUERDA<br><br>
+        <span class="accent-green">Solução:</span> Você pode ir para Cima, Baixo ou Direita. Se for para Esquerda, Game Over.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--cyan);">
+      <h3 style="color: var(--cyan);">3. A Disjunção (||, OR, V, +)</h3>
+      <p class="mono">Isso cria caminhos alternativos. Pense no "||" como duas portas abertas. Basta você escolher passar por UMA das portas para o computador aceitar como verdadeiro.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> CIMA <span class="accent-yellow">||</span> BAIXO<br><br>
+        <span class="accent-green">Solução:</span> Pressione Cima OU Baixo. Ambas as escolhas salvam a sua vida.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--yellow);">
+      <h3 style="color: var(--yellow);">4. A Conjunção (&&, AND, ^, *)</h3>
+      <p class="mono">Ao contrário das portas abertas do OR, o "&&" é um filtro implacável. É como um cofre com duas fechaduras: você PRECISA atender às DUAS condições ao mesmo tempo para abrir.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> DIREITA <span class="accent-red">&& !</span> CIMA<br><br>
+        <span class="accent-green">Solução:</span> A sua escolha tem que ser Direita E ao mesmo tempo não pode ser Cima. A única resposta exata: Direita.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--red);">
+      <h3 style="color: var(--red);">5. Negação de Parênteses (Nível Final)</h3>
+      <p class="mono">Os parênteses funcionam como uma caixa. Primeiro nós olhamos o que tem na caixa, e depois aplicamos a regra de fora. Se o "!" estiver fora, ele proíbe o grupo inteiro.</p>
+      <div class="tut-example mono">
+        <span class="accent-yellow">Comando:</span> <span class="accent-red">!</span>(ESQUERDA <span class="accent-yellow">||</span> DIREITA)<br><br>
+        <span class="accent-green">Solução:</span> A caixa pegou todo o eixo horizontal. O "!" proibiu essa caixa inteira. O que sobra? Apenas Cima ou Baixo.
+      </div>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--white);">
+      <h3 style="color: var(--white);">6. Sobrevivência e Vidas</h3>
+      <p class="mono">Esqueça a morte instantânea. O jogo agora é mais justo: você começa com <span class="accent-red">3 Vidas (♥)</span>. Cada erro consome uma vida, mas você pode recuperá-las acumulando XP através de acertos consecutivos. Jogue com estratégia e sobreviva mais tempo.</p>
+    </div>
+
+    <div class="tut-step" style="border-left-color: var(--green);">
+      <h3 style="color: var(--green);">7. Powerups</h3>
+      <p class="mono">Nas horas de desespero, o jogo oferece itens especiais para ajudar: <span class="accent-yellow">Tempo Extra (+5s)</span>, <span class="accent-cyan">Congelar Multiplicador</span>, <span class="accent-red">Remover Opção Certa</span>, <span class="accent-green">Escudo (bloqueia 1 erro)</span> e <span class="accent-yellow">Multiplicador x2</span>. Use com sabedoria.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <button class="btn-primary" onclick="document.getElementById('chat-window').classList.add('open'); document.getElementById('terminal-input').focus();">
+        <span class="btn-icon">&gt;_</span> Abrir Chatbot e Praticar
+      </button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo mono">
+        <span class="accent-green">TupãStudios</span><span class="accent-cyan">©</span> <span id="footer-year"></span>
+      </div>
+      <div class="footer-links mono">
+        <a href="https://github.com/3-semestre-USJT/NOT-NOT-booleano-Tup-" target="_blank">GitHub</a>
+      </div>
+      <div class="footer-copy mono">
+        <span class="accent-red">! IndexError</span> — Desenvolvido no Brasil pela TupãStudios.
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <div class="terminal-header" style="justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div class="term-dots">
+            <span class="tm-dot red" id="chat-close-btn" style="cursor:pointer;" title="Fechar"></span>
+            <span class="tm-dot yellow" id="chat-expand-btn" style="cursor:pointer;" title="Expandir/Minimizar"></span>
+            <span class="tm-dot green"></span>
+          </div>
+          <span class="term-title mono" style="text-align: left;">paradox@tupa-studios</span>
+        </div>
+
+        <div class="mode-toggle-container" style="margin-top: 0;">
+          <button id="mode-toggle" class="mode-btn assistant" style="padding: 0.3rem 0.6rem;">ASSISTENTE</button>
+        </div>
+      </div>
+
+      <div class="terminal-body" id="terminal-body" style="flex: 1; max-height: none;"></div>
+
+      <div class="terminal-input-area">
+        <span class="input-prompt mono accent-cyan">~$</span>
+        <input type="text" id="terminal-input" class="terminal-input mono" placeholder="Digite 'ajuda' ou 'tutorial'..." autocomplete="off" />
+      </div>
+    </div>
+
+    <button class="chat-toggle-btn" id="chat-toggle-btn">
+      <span class="accent-cyan" style="font-size: 1.2rem;">&gt;_</span>
+      <span>Falar com Paradox</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
